@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace ChrisReedIO\Inteliment;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class IntelimentPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'inteliment';
     }
 
     public function register(Panel $panel): void
