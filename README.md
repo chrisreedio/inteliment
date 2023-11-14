@@ -1,4 +1,4 @@
-# Inteliment - Filament Integration for OpenAI's Assistants
+# Inteliment - Filament OpenAI Assistant Integration
 
 ![Inteliment](https://user-images.githubusercontent.com/77644584/282675849-872f76c6-9247-4180-9af7-140fb9c53c33.png)
 
