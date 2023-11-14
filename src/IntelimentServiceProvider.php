@@ -2,10 +2,9 @@
 
 namespace ChrisReedIO\Inteliment;
 
-use Filament\Support\Assets\AlpineComponent;
+use ChrisReedIO\Inteliment\Commands\IntelimentCommand;
+use ChrisReedIO\Inteliment\Testing\TestsInteliment;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
@@ -13,8 +12,6 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ChrisReedIO\Inteliment\Commands\IntelimentCommand;
-use ChrisReedIO\Inteliment\Testing\TestsInteliment;
 
 class IntelimentServiceProvider extends PackageServiceProvider
 {
@@ -103,8 +100,8 @@ class IntelimentServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('inteliment', __DIR__ . '/../resources/dist/components/inteliment.js'),
-            Css::make('inteliment-styles', __DIR__ . '/../resources/dist/inteliment.css'),
-            Js::make('inteliment-scripts', __DIR__ . '/../resources/dist/inteliment.js'),
+            // Css::make('inteliment-styles', __DIR__ . '/../resources/dist/inteliment.css'),
+            // Js::make('inteliment-scripts', __DIR__ . '/../resources/dist/inteliment.js'),
         ];
     }
 
