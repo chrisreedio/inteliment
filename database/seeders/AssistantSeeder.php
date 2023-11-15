@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
-use ChrisReedIO\Inteliment\Models\Assistant;
+use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
 use Illuminate\Database\Seeder;
 
 class AssistantSeeder extends Seeder

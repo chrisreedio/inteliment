@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
-use ChrisReedIO\Inteliment\Models\Assistant;
+use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use ChrisReedIO\Inteliment\Models\Thread;
-use ChrisReedIO\Inteliment\Models\User;
+use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
+use ChrisReedIO\Inteliment\Models\OpenAI\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;

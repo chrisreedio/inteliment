@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use ChrisReedIO\Inteliment\Models\Run;
+use ChrisReedIO\Inteliment\Models\OpenAI\Run;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
