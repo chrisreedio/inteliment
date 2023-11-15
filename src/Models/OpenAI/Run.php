@@ -71,6 +71,7 @@ class Run extends Model
     {
         return $this->runSteps();
     }
+
     public function runSteps(): HasMany
     {
         return $this->hasMany(RunStep::class);

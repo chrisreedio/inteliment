@@ -10,6 +10,7 @@ enum GPTModel: string implements HasLabel, HasColor
     case GPT35Turbo = 'gpt-3.5-turbo';
     case GPT4 = 'gpt-4';
     case GPT4Turbo = 'gpt-4-turbo';
+
     // case GPT4Vision = 'gpt-4-vision';
 
     public function getLabel(): string

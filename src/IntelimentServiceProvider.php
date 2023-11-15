@@ -55,6 +55,26 @@ class IntelimentServiceProvider extends PackageServiceProvider
         }
     }
 
+    /**
+     * @return array<class-string>
+     */
+    protected function getCommands(): array
+    {
+        return [
+            IntelimentCommand::class,
+        ];
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getMigrations(): array
+    {
+        return [
+            'create_inteliment_table',
+        ];
+    }
+
     public function packageRegistered(): void
     {
     }
@@ -88,11 +108,6 @@ class IntelimentServiceProvider extends PackageServiceProvider
         Testable::mixin(new TestsInteliment());
     }
 
-    protected function getAssetPackageName(): ?string
-    {
-        return 'chrisreedio/inteliment';
-    }
-
     /**
      * @return array<Asset>
      */
@@ -105,14 +120,17 @@ class IntelimentServiceProvider extends PackageServiceProvider
         ];
     }
 
-    /**
-     * @return array<class-string>
-     */
-    protected function getCommands(): array
+    protected function getAssetPackageName(): ?string
     {
-        return [
-            IntelimentCommand::class,
-        ];
+        return 'chrisreedio/inteliment';
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getScriptData(): array
+    {
+        return [];
     }
 
     /**
@@ -129,23 +147,5 @@ class IntelimentServiceProvider extends PackageServiceProvider
     protected function getRoutes(): array
     {
         return [];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    protected function getScriptData(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getMigrations(): array
-    {
-        return [
-            'create_inteliment_table',
-        ];
     }
 }
