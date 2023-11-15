@@ -2,6 +2,8 @@
 
 namespace ChrisReedIO\Inteliment\Resources;
 
+use ChrisReedIO\Inteliment\Enums\OpenAI\RunStepStatus;
+use ChrisReedIO\Inteliment\Enums\OpenAI\RunStepType;
 use ChrisReedIO\Inteliment\Models\OpenAI\RunStep;
 use ChrisReedIO\Inteliment\Resources\RunStepResource\Pages;
 use Filament\Forms;
@@ -38,37 +40,69 @@ class RunStepResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('run_id')
-                    ->relationship('run', 'id'),
-                Forms\Components\Select::make('thread_id')
-                    ->relationship('thread', 'id'),
-                Forms\Components\Select::make('assistant_id')
-                    ->relationship('assistant', 'name'),
-                Forms\Components\TextInput::make('api_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_assistant_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_thread_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_run_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('object')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('thread.run.step'),
-                Forms\Components\TextInput::make('type')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('status')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('step_details'),
-                Forms\Components\TextInput::make('last_error')
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('expired_at'),
-                Forms\Components\DateTimePicker::make('cancelled_at'),
-                Forms\Components\DateTimePicker::make('failed_at'),
-                Forms\Components\DateTimePicker::make('completed_at'),
-                Forms\Components\TextInput::make('metadata'),
-                Forms\Components\DateTimePicker::make('api_created_at'),
+                Forms\Components\Grid::make(3)
+                    ->schema([
+                        Forms\Components\Select::make('run_id')
+                            ->relationship('run', 'id'),
+                        Forms\Components\Select::make('thread_id')
+                            ->relationship('thread', 'id'),
+                        Forms\Components\Select::make('assistant_id')
+                            ->relationship('assistant', 'name'),
+                    ]),
+                Forms\Components\Section::make('OpenAI Status')
+                    ->disabled()
+                    ->icon('far-microchip-ai')
+                    ->compact()
+                    ->columns(3)
+                    ->schema([
+                        Forms\Components\TextInput::make('expired_at')->placeholder('Not Expired'),
+                        Forms\Components\TextInput::make('cancelled_at')->placeholder('Not Cancelled'),
+                        Forms\Components\TextInput::make('failed_at')->placeholder('Not Failed'),
+                        Forms\Components\TextInput::make('completed_at')->placeholder('Not Completed'),
+                        Forms\Components\Select::make('type')
+                            ->options(RunStepType::class),
+                        Forms\Components\Select::make('status')
+                            ->options(RunStepStatus::class),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\Textarea::make('step_details')
+                                    ->placeholder('Not Started'),
+                                Forms\Components\Textarea::make('last_error')
+                                    ->placeholder('No Error')
+                            ]),
+                    ]),
+                Forms\Components\Textarea::make('metadata')
+                    ->columnSpanFull(),
+                Forms\Components\Section::make('OpenAI API')
+                    ->disabled()
+                    ->icon('far-microchip-ai')
+                    ->compact()
+                    ->columns(3)
+                    ->schema([
+                        Forms\Components\TextInput::make('api_id')
+                            ->label('ID')
+                            ->placeholder('Not Created')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_assistant_id')
+                            ->label('Assistant ID')
+                            ->placeholder('Not Created')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_thread_id')
+                            ->label('Thread ID')
+                            ->placeholder('Not Created')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_run_id')
+                            ->label('Run ID')
+                            ->placeholder('Not Created')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('object')
+                            ->required()
+                            ->maxLength(255)
+                            ->default('thread.run.step'),
+                        Forms\Components\TextInput::make('api_created_at')
+                            ->label('Created At')
+                            ->placeholder('Not Created'),
+                    ]),
             ]);
     }
 

@@ -36,25 +36,41 @@ class MessageResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $faEnabled = config('inteliment.fontawesome', false);
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name'),
-                Forms\Components\Select::make('assistant_id')
-                    ->relationship('assistant', 'name'),
-                Forms\Components\Select::make('thread_id')
-                    ->relationship('thread', 'id'),
-                Forms\Components\Select::make('run_id')
-                    ->relationship('run', 'id'),
+                Forms\Components\Section::make('Relationships')
+                    ->icon('far-family')
+                    ->compact()
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\Select::make('user_id')
+                            ->prefixIcon($faEnabled ? 'far-user' : 'heroicon-o-user')
+                            ->relationship('user', 'name'),
+                        Forms\Components\Select::make('assistant_id')
+                            ->prefixIcon($faEnabled ? 'far-robot' : 'heroicon-o-cpu-chip')
+                            ->relationship('assistant', 'name'),
+                        Forms\Components\Select::make('thread_id')
+                            ->prefixIcon($faEnabled ? 'far-reel' : 'heroicon-o-inbox-stack')
+                            ->relationship('thread', 'id'),
+                        Forms\Components\Select::make('run_id')
+                            ->prefixIcon($faEnabled ? 'far-person-running-fast' : 'heroicon-o-forward')
+                            ->relationship('run', 'id'),
+                    ]),
                 Forms\Components\Select::make('role')
+                    ->prefixIcon($faEnabled ? 'far-user-tag' : 'heroicon-o-user')
                     ->disabled()
+                    ->placeholder('Not set')
                     ->options(MessageRole::class),
                 Forms\Components\TextInput::make('tokens')
+                    ->prefixIcon($faEnabled ? 'far-calculator' : null)
                     ->disabled()
+                    ->placeholder('Not Calculated')
                     ->numeric(),
                 Forms\Components\Textarea::make('content')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('file_ids')
+                    ->label('Files')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('metadata')
                     ->columnSpanFull(),

@@ -41,6 +41,7 @@ class AssistantResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->prefixIcon('far-signature')
+                    ->helperText('Give this assistant a name.')
                     ->maxLength(255),
                 Forms\Components\Select::make('model')
                     ->options(GPTModel::class)
