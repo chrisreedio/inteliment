@@ -9,7 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Spatie\Permission\Models\Role;
+
 use function __;
 use function config;
 
@@ -22,6 +22,7 @@ class AssistantResource extends Resource
         if (config('inteliment.fontawesome', false)) {
             return 'far-robot';
         }
+
         return 'heroicon-o-cpu-chip';
     }
 
