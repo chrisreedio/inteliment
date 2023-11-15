@@ -1,8 +1,8 @@
 <?php
 
-namespace ChrisReedIO\Inteliment\Filament\Resources\AssistantResource\Pages;
+namespace ChrisReedIO\Inteliment\Resources\AssistantResource\Pages;
 
-use ChrisReedIO\Inteliment\Filament\Resources\AssistantResource;
+use ChrisReedIO\Inteliment\Resources\AssistantResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

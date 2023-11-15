@@ -1,8 +1,8 @@
 <?php
 
-namespace ChrisReedIO\Inteliment\Filament\Resources\ThreadResource\Pages;
+namespace ChrisReedIO\Inteliment\Resources\ThreadResource\Pages;
 
-use ChrisReedIO\Inteliment\Filament\Resources\ThreadResource;
+use ChrisReedIO\Inteliment\Resources\ThreadResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateThread extends CreateRecord

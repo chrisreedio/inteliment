@@ -1,9 +1,9 @@
 <?php
 
-namespace ChrisReedIO\Inteliment\Filament\Resources;
+namespace ChrisReedIO\Inteliment\Resources;
 
-use ChrisReedIO\Inteliment\Filament\Resources\MessageResource\Pages;
 use ChrisReedIO\Inteliment\Models\OpenAI\Message;
+use ChrisReedIO\Inteliment\Resources\MessageResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

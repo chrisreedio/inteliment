@@ -1,18 +1,18 @@
 <?php
 
-namespace ChrisReedIO\Inteliment\Filament\Resources;
+namespace ChrisReedIO\Inteliment\Resources;
 
-use ChrisReedIO\Inteliment\Filament\Resources\AssistantResource\Pages;
-use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
+use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
+use ChrisReedIO\Inteliment\Resources\ThreadResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class AssistantResource extends Resource
+class ThreadResource extends Resource
 {
-    protected static ?string $model = Assistant::class;
+    protected static ?string $model = Thread::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -20,23 +20,18 @@ class AssistantResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('model')
+                Forms\Components\TextInput::make('user_id')
                     ->required()
-                    ->maxLength(255)
-                    ->default('gpt-4-turbo'),
+                    ->numeric(),
                 Forms\Components\TextInput::make('api_id')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('name')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('instructions')
-                    ->columnSpanFull(),
-                Forms\Components\Toggle::make('code_interpreter')
-                    ->required(),
-                Forms\Components\Toggle::make('retrieval')
-                    ->required(),
+                Forms\Components\TextInput::make('object')
+                    ->required()
+                    ->maxLength(255)
+                    ->default('thread'),
                 Forms\Components\TextInput::make('metadata'),
+                Forms\Components\TextInput::make('api_created_at')
+                    ->maxLength(255),
             ]);
     }
 
@@ -44,16 +39,15 @@ class AssistantResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('model')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('user_id')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('api_id')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('object')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('code_interpreter')
-                    ->boolean(),
-                Tables\Columns\IconColumn::make('retrieval')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('api_created_at')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -86,9 +80,9 @@ class AssistantResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAssistants::route('/'),
-            'create' => Pages\CreateAssistant::route('/create'),
-            'edit' => Pages\EditAssistant::route('/{record}/edit'),
+            'index' => Pages\ListThreads::route('/'),
+            'create' => Pages\CreateThread::route('/create'),
+            'edit' => Pages\EditThread::route('/{record}/edit'),
         ];
     }
 }

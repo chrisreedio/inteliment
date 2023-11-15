@@ -1,8 +1,8 @@
 <?php
 
-namespace ChrisReedIO\Inteliment\Filament\Resources\MessageResource\Pages;
+namespace ChrisReedIO\Inteliment\Resources\MessageResource\Pages;
 
-use ChrisReedIO\Inteliment\Filament\Resources\MessageResource;
+use ChrisReedIO\Inteliment\Resources\MessageResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChrisReedIO\Inteliment\Filament\Resources\RunStepResource\Pages;
+namespace ChrisReedIO\Inteliment\Resources\RunStepResource\Pages;
 
-use ChrisReedIO\Inteliment\Filament\Resources\RunStepResource;
+use ChrisReedIO\Inteliment\Resources\RunStepResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
