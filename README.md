@@ -46,11 +46,16 @@ return [
 ];
 ```
 
-## Usage
+### Panel Configuration
+
+Include this plugin in your panel configuration:
 
 ```php
-$inteliment = new ChrisReedIO\Inteliment();
-echo $inteliment->echoPhrase('Hello, ChrisReedIO!');
+$panel
+	->plugins([
+		// ... Other Plugins
+        \ChrisReedIO\Inteliment\IntelimentPlugin::make(),        
+	])
 ```
 
 ## Testing
