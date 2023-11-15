@@ -9,12 +9,30 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use function __;
+use function config;
 
 class RunResource extends Resource
 {
-    protected static ?string $model = Run::class;
+    public static function getNavigationIcon(): ?string
+    {
+        // Check to see if font awesome is installed, if so use it
+        // else fall back to hero icons
+        if (config('inteliment.fontawesome', false)) {
+            return 'far-person-running-fast';
+        }
+        return 'heroicon-o-forward';
+    }
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('inteliment::messages.navigation_group');
+    }
+
+    public static function getModel(): string
+    {
+        return config('inteliment.models.run', Run::class);
+    }
 
     public static function form(Form $form): Form
     {
