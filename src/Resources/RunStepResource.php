@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+
 use function __;
 use function config;
 
@@ -21,6 +22,7 @@ class RunStepResource extends Resource
         if (config('inteliment.fontawesome', false)) {
             return 'far-stairs';
         }
+
         return 'heroicon-o-puzzle-piece';
     }
 

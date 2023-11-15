@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+
 use function __;
 use function config;
 
@@ -21,6 +22,7 @@ class MessageResource extends Resource
         if (config('inteliment.fontawesome', false)) {
             return 'far-message';
         }
+
         return 'heroicon-o-chat-bubble-bottom-center-text';
     }
 
