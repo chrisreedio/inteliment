@@ -33,6 +33,12 @@ You can publish the config file with:
 php artisan vendor:publish --tag="inteliment-config"
 ```
 
+Publish the OpenAI config with:
+
+```bash
+php artisan vendor:publish --provider="OpenAI\Laravel\ServiceProvider"
+```
+
 Optionally, you can publish the views using
 
 ```bash
