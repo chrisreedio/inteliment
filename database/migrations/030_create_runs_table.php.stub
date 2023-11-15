@@ -1,9 +1,7 @@
 <?php
 
-use App\Models\Assistant;
-use App\Models\Run;
-use App\Models\Thread;
-use App\Models\User;
+use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
+use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
