@@ -5,7 +5,7 @@ namespace ChrisReedIO\Inteliment\Enums\OpenAI;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum RunStepType: string implements HasLabel, HasColor
+enum RunStepType: string implements HasColor, HasLabel
 {
     case MESSAGE_CREATION = 'message_creation';
     case TOOL_CALLS = 'tool_calls';
@@ -18,7 +18,7 @@ enum RunStepType: string implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string | array | null
     {
         return match ($this) {
             self::MESSAGE_CREATION => 'blue-600',

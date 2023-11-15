@@ -4,5 +4,5 @@
 return [
     'models' => [
         'user' => '\App\Models\User',
-    ]
+    ],
 ];

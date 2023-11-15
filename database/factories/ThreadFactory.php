@@ -18,7 +18,7 @@ class ThreadFactory extends Factory
             'user_id' => User::factory(),
             'api_id' => 'thread_' . Str::random(6),
             'object' => 'thread',
-            'metadata' => [ ],
+            'metadata' => [],
             'api_created_at' => $this->faker->dateTimeBetween('-1 year'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

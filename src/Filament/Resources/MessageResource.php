@@ -3,15 +3,12 @@
 namespace ChrisReedIO\Inteliment\Filament\Resources;
 
 use ChrisReedIO\Inteliment\Filament\Resources\MessageResource\Pages;
-use ChrisReedIO\Inteliment\Filament\Resources\MessageResource\RelationManagers;
 use ChrisReedIO\Inteliment\Models\OpenAI\Message;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MessageResource extends Resource
 {

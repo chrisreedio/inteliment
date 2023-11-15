@@ -5,7 +5,7 @@ namespace ChrisReedIO\Inteliment\Enums\OpenAI;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum RunStatus: string implements HasLabel, HasColor
+enum RunStatus: string implements HasColor, HasLabel
 {
     case QUEUED = 'queued';
     case IN_PROGRESS = 'in_progress';
@@ -30,7 +30,7 @@ enum RunStatus: string implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string | array | null
     {
         return match ($this) {
             self::QUEUED => 'gray-600',
@@ -43,5 +43,4 @@ enum RunStatus: string implements HasLabel, HasColor
             self::EXPIRED => 'amber-800',
         };
     }
-
 }

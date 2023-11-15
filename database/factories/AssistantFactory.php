@@ -18,7 +18,7 @@ class AssistantFactory extends Factory
             'model' => GPTModel::GPT4Turbo,
             'description' => $this->faker->sentence(),
             'instructions' => $this->faker->paragraph(),
-            'metadata' => [ ],
+            'metadata' => [],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

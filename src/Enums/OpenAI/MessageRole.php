@@ -5,7 +5,7 @@ namespace ChrisReedIO\Inteliment\Enums\OpenAI;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum MessageRole: string implements HasLabel, HasColor
+enum MessageRole: string implements HasColor, HasLabel
 {
     case System = 'system';
     case User = 'user';
@@ -16,7 +16,7 @@ enum MessageRole: string implements HasLabel, HasColor
         return $this->name;
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string | array | null
     {
         return match ($this) {
             self::System => 'gray-600',

@@ -5,7 +5,7 @@ namespace ChrisReedIO\Inteliment\Enums\OpenAI;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum RunStepStatus: string implements HasLabel, HasColor
+enum RunStepStatus: string implements HasColor, HasLabel
 {
     case IN_PROGRESS = 'in_progress';
     case CANCELLED = 'cancelled';
@@ -24,7 +24,7 @@ enum RunStepStatus: string implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string | array | null
     {
         return match ($this) {
             self::IN_PROGRESS => 'blue-600',
@@ -34,5 +34,4 @@ enum RunStepStatus: string implements HasLabel, HasColor
             self::EXPIRED => 'amber-800',
         };
     }
-
 }

@@ -5,7 +5,7 @@ namespace ChrisReedIO\Inteliment\Enums\OpenAI;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum GPTModel: string implements HasLabel, HasColor
+enum GPTModel: string implements HasColor, HasLabel
 {
     case GPT35Turbo = 'gpt-3.5-turbo';
     case GPT4 = 'gpt-4';
@@ -24,7 +24,7 @@ enum GPTModel: string implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string | array | null
     {
         return match ($this) {
             self::GPT35Turbo => 'orange-600',
@@ -43,5 +43,4 @@ enum GPTModel: string implements HasLabel, HasColor
             // self::GPT4Vision => 'gpt-4-vision-preview'
         };
     }
-
 }

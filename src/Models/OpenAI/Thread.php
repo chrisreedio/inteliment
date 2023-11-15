@@ -32,6 +32,4 @@ class Thread extends Model
     {
         return $this->hasMany(Run::class);
     }
-
-
 }
