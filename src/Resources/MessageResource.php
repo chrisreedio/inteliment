@@ -2,6 +2,7 @@
 
 namespace ChrisReedIO\Inteliment\Resources;
 
+use ChrisReedIO\Inteliment\Enums\OpenAI\MessageRole;
 use ChrisReedIO\Inteliment\Models\OpenAI\Message;
 use ChrisReedIO\Inteliment\Resources\MessageResource\Pages;
 use Filament\Forms;
@@ -9,7 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-
 use function __;
 use function config;
 
@@ -48,28 +48,42 @@ class MessageResource extends Resource
                     ->relationship('thread', 'id'),
                 Forms\Components\Select::make('run_id')
                     ->relationship('run', 'id'),
-                Forms\Components\TextInput::make('api_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_assistant_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_thread_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_run_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('object')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('thread.message'),
-                Forms\Components\TextInput::make('role')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('user'),
-                Forms\Components\TextInput::make('content'),
+                Forms\Components\Select::make('role')
+                    ->disabled()
+                    ->options(MessageRole::class),
                 Forms\Components\TextInput::make('tokens')
+                    ->disabled()
                     ->numeric(),
-                Forms\Components\TextInput::make('file_ids'),
-                Forms\Components\TextInput::make('metadata'),
-                Forms\Components\DateTimePicker::make('api_created_at'),
+                Forms\Components\Textarea::make('content')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('file_ids')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('metadata')
+                    ->columnSpanFull(),
+                Forms\Components\Section::make('OpenAI API')
+                    ->disabled()
+                    ->icon('far-microchip-ai')
+                    ->compact()
+                    ->columns(3)
+                    ->schema([
+                        Forms\Components\TextInput::make('object')
+                            ->maxLength(255)
+                            ->default('thread.message'),
+                        Forms\Components\TextInput::make('api_id')
+                            ->label('ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_assistant_id')
+                            ->label('Assistant ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_thread_id')
+                            ->label('Thread ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_run_id')
+                            ->label('Run ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_created_at')
+                            ->label('Created At'),
+                    ]),
             ]);
     }
 

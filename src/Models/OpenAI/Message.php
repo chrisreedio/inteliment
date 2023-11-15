@@ -43,7 +43,7 @@ class Message extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(config('inteliment.models.user', 'App\Models\User'));
     }
 
     public function assistant(): BelongsTo

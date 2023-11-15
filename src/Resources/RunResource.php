@@ -2,6 +2,8 @@
 
 namespace ChrisReedIO\Inteliment\Resources;
 
+use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
+use ChrisReedIO\Inteliment\Enums\OpenAI\RunStatus;
 use ChrisReedIO\Inteliment\Models\OpenAI\Run;
 use ChrisReedIO\Inteliment\Resources\RunResource\Pages;
 use Filament\Forms;
@@ -9,7 +11,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-
 use function __;
 use function config;
 
@@ -40,37 +41,68 @@ class RunResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('thread_id')
-                    ->relationship('thread', 'id'),
-                Forms\Components\Select::make('assistant_id')
-                    ->relationship('assistant', 'name'),
-                Forms\Components\TextInput::make('api_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_thread_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('api_assistant_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('object')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('thread.run'),
-                Forms\Components\TextInput::make('status')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('required_action'),
-                Forms\Components\TextInput::make('last_error'),
-                Forms\Components\DateTimePicker::make('expires_at'),
-                Forms\Components\DateTimePicker::make('started_at'),
-                Forms\Components\DateTimePicker::make('cancelled_at'),
-                Forms\Components\DateTimePicker::make('failed_at'),
-                Forms\Components\DateTimePicker::make('completed_at'),
-                Forms\Components\TextInput::make('model')
-                    ->maxLength(255),
+                Forms\Components\Grid::make(3)
+                    ->schema([
+                        Forms\Components\Select::make('thread_id')
+                            ->relationship('thread', 'id'),
+                        Forms\Components\Select::make('assistant_id')
+                            ->relationship('assistant', 'name'),
+                        Forms\Components\Select::make('model')
+                            ->options(GPTModel::class)
+                            ->prefixIcon('far-robot')
+                            ->helperText('Optional: Overrides the assistant\'s default model.'),
+                    ]),
+                Forms\Components\Section::make('OpenAI Status')
+                    ->disabled()
+                    ->icon('far-microchip-ai')
+                    ->compact()
+                    ->columns(3)
+                    ->schema([
+                        Forms\Components\TextInput::make('expires_at')->placeholder('No expiration set.'),
+                        Forms\Components\TextInput::make('started_at')->placeholder('Not started.'),
+                        Forms\Components\TextInput::make('cancelled_at')->placeholder('Not cancelled.'),
+                        Forms\Components\TextInput::make('failed_at')->placeholder('Not failed.'),
+                        Forms\Components\TextInput::make('status')
+                            ->placeholder('Not Created')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('completed_at')->placeholder('Not completed.'),
+                        Forms\Components\Textarea::make('required_action')
+                            ->columnSpanFull()
+                            ->placeholder('No action required. (yet)'),
+                        Forms\Components\Textarea::make('last_error')
+                            ->columnSpanFull()
+                            ->placeholder('No errors reported.'),
+                    ]),
                 Forms\Components\Textarea::make('instructions')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('tools'),
-                Forms\Components\TextInput::make('file_ids'),
-                Forms\Components\TextInput::make('metadata'),
-                Forms\Components\DateTimePicker::make('api_created_at'),
+                Forms\Components\Textarea::make('tools')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('file_ids')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('metadata')
+                    ->columnSpanFull(),
+                Forms\Components\Section::make('OpenAI API')
+                    ->disabled()
+                    ->icon('far-microchip-ai')
+                    ->compact()
+                    ->columns(3)
+                    ->schema([
+                        Forms\Components\TextInput::make('api_id')
+                            ->label('ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_thread_id')
+                            ->label('Thread ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_assistant_id')
+                            ->label('Assistant ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('object')
+                            ->required()
+                            ->maxLength(255)
+                            ->default('thread.run'),
+                        Forms\Components\TextInput::make('api_created_at')
+                            ->label('Created At'),
+                    ]),
             ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace ChrisReedIO\Inteliment\Resources;
 
+use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
 use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
 use ChrisReedIO\Inteliment\Resources\AssistantResource\Pages;
 use Filament\Forms;
@@ -40,23 +41,41 @@ class AssistantResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('model')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('gpt-4-turbo'),
-                Forms\Components\TextInput::make('api_id')
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('name')
+                    ->prefixIcon('far-signature')
                     ->maxLength(255),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\Select::make('model')
+                    ->options(GPTModel::class)
+                    ->prefixIcon('far-robot')
+                    ->default(GPTModel::GPT4Turbo)
+                    ->required()
+                    ->selectablePlaceholder(false)
+                    ->helperText('GPT-4 Turbo is the preferred model.'),
+
+                Forms\Components\TextInput::make('description')
+                    ->helperText('Describe this assistant in a few words.')
+                    ->prefixIcon('far-subtitles')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('instructions')
+                    ->helperText('What does this assistant do? What is it for? What should it not do?')
+                    ->rows(7)
                     ->columnSpanFull(),
-                Forms\Components\Toggle::make('code_interpreter')
-                    ->required(),
-                Forms\Components\Toggle::make('retrieval')
-                    ->required(),
-                Forms\Components\TextInput::make('metadata'),
+                Forms\Components\Toggle::make('code_interpreter'),
+                Forms\Components\Toggle::make('retrieval'),
+                Forms\Components\Textarea::make('metadata')
+                    ->columnSpanFull(),
+                Forms\Components\Section::make('OpenAI API')
+                    ->disabled()
+                    ->compact()
+                    ->icon('far-microchip-ai')
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('api_id')
+                            ->label('ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('api_created_at')
+                            ->label('Created At'),
+                    ]),
             ]);
     }
 

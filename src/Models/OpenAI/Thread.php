@@ -4,7 +4,9 @@ namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use function config;
 
 class Thread extends Model
 {
@@ -22,6 +24,11 @@ class Thread extends Model
         'metadata' => 'array',
         'api_created_at' => 'datetime',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(config('inteliment.models.user', 'App\Models\User'));
+    }
 
     public function messages(): HasMany
     {

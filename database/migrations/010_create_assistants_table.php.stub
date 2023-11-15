@@ -21,6 +21,7 @@ return new class extends Migration {
             // Functions are defined as 'functions' that can be attached via Many-To-Many to Assistants
 
             $table->json('metadata')->nullable();
+            $table->timestamp('api_created_at')->nullable();
             $table->timestamps();
         });
     }

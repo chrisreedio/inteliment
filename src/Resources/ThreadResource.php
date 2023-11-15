@@ -9,7 +9,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-
 use function __;
 use function config;
 
@@ -40,18 +39,26 @@ class ThreadResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('api_id')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('object')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('thread'),
-                Forms\Components\TextInput::make('metadata'),
-                Forms\Components\TextInput::make('api_created_at')
-                    ->maxLength(255),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name'),
+                Forms\Components\Textarea::make('metadata')
+                    ->columnSpanFull(),
+                Forms\Components\Section::make('OpenAI API')
+                    ->columns(3)
+                    ->disabled()
+                    ->icon('far-microchip-ai')
+                    ->compact()
+                    ->schema([
+                        Forms\Components\TextInput::make('api_id')
+                            ->label('ID')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('object')
+                            ->label('Object')
+                            ->default('thread'),
+                        Forms\Components\TextInput::make('api_created_at')
+                            ->label('Created At')
+                            ->maxLength(255),
+                    ]),
             ]);
     }
 
@@ -59,8 +66,8 @@ class ThreadResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('user.name')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('api_id')
                     ->searchable(),
