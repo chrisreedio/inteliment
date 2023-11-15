@@ -27,7 +27,13 @@ class IntelimentPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        //
+        $panel->resources([
+            Resources\AssistantResource::class,
+            Resources\ThreadResource::class,
+            Resources\MessageResource::class,
+            Resources\RunResource::class,
+            Resources\RunStepResource::class,
+        ]);
     }
 
     public function boot(Panel $panel): void
