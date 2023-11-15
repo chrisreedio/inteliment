@@ -68,7 +68,7 @@ class RunStepResource extends Resource
                                 Forms\Components\Textarea::make('step_details')
                                     ->placeholder('Not Started'),
                                 Forms\Components\Textarea::make('last_error')
-                                    ->placeholder('No Error')
+                                    ->placeholder('No Error'),
                             ]),
                     ]),
                 Forms\Components\Textarea::make('metadata')

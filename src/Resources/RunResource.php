@@ -3,7 +3,6 @@
 namespace ChrisReedIO\Inteliment\Resources;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
-use ChrisReedIO\Inteliment\Enums\OpenAI\RunStatus;
 use ChrisReedIO\Inteliment\Models\OpenAI\Run;
 use ChrisReedIO\Inteliment\Resources\RunResource\Pages;
 use Filament\Forms;
@@ -11,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+
 use function __;
 use function config;
 
