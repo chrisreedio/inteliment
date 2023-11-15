@@ -17,8 +17,6 @@ class MessageResource extends Resource
 {
     public static function getNavigationIcon(): ?string
     {
-        // Check to see if font awesome is installed, if so use it
-        // else fall back to hero icons
         if (config('inteliment.fontawesome', false)) {
             return 'far-message';
         }
