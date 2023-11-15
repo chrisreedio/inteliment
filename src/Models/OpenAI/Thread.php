@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
-use App\Enums\OpenAI\RunStepStatus;
-use App\Enums\OpenAI\RunStepType;
+use ChrisReedIO\Inteliment\Enums\OpenAI\RunStepStatus;
+use ChrisReedIO\Inteliment\Enums\OpenAI\RunStepType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

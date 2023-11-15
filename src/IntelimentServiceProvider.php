@@ -71,7 +71,11 @@ class IntelimentServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_inteliment_table',
+            '010_create_assistants_table',
+            '020_create_threads_table',
+            '030_create_runs_table',
+            '040_create_run_steps_table',
+            '050_create_messages_table',
         ];
     }
 
@@ -86,6 +90,8 @@ class IntelimentServiceProvider extends PackageServiceProvider
             $this->getAssets(),
             $this->getAssetPackageName()
         );
+
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         FilamentAsset::registerScriptData(
             $this->getScriptData(),

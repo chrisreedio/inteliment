@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
-use App\Enums\OpenAI\GPTModel;
+use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

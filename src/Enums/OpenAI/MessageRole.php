@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums\OpenAI;
+namespace ChrisReedIO\Inteliment\Enums\OpenAI;
 
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Run;
+use ChrisReedIO\Inteliment\Models\Run;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 

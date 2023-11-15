@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Enums\OpenAI\MessageRole;
-use App\Models\Message;
-use App\Models\Thread;
-use App\Models\User;
+use ChrisReedIO\Inteliment\Enums\OpenAI\MessageRole;
+use ChrisReedIO\Inteliment\Models\Message;
+use ChrisReedIO\Inteliment\Models\Thread;
+use ChrisReedIO\Inteliment\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
