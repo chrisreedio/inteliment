@@ -2,6 +2,7 @@
 
 namespace ChrisReedIO\Inteliment\Resources;
 
+use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
 use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
 use ChrisReedIO\Inteliment\Resources\ThreadResource\Pages;
 use Filament\Forms;
@@ -40,8 +41,19 @@ class ThreadResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name'),
-                Forms\Components\Textarea::make('metadata')
-                    ->columnSpanFull(),
+                // Forms\Components\Textarea::make('metadata')
+                //     ->columnSpanFull(),
+                Forms\Components\Repeater::make('metadata')
+                    ->maxItems(20)
+                    ->hidden(fn (Thread $thread) => empty($thread->metadata))
+                    ->schema([
+                        Forms\Components\TextInput::make('key')
+                            ->label('Key')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('value')
+                            ->label('Value')
+                            ->maxLength(255),
+                    ]),
                 Forms\Components\Section::make('OpenAI API')
                     ->columns(3)
                     ->disabled()
@@ -69,19 +81,28 @@ class ThreadResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('api_id')
+                    ->label('OpenAI ID')
+                    ->placeholder('Not Created')
+                    ->badge()
+                    ->copyable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('object')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('object')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('api_created_at')
-                    ->searchable(),
+                    ->label('OpenAI Created At')
+                    ->placeholder('Not Created')
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
             ])
             ->filters([
                 //
@@ -91,9 +112,13 @@ class ThreadResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->deselectRecordsAfterCompletion(),
                 ]),
-            ]);
+            ])
+            ->checkIfRecordIsSelectableUsing(
+                fn (Thread $record): bool => $record->api_id === null,
+            );
     }
 
     public static function getRelations(): array
@@ -108,7 +133,8 @@ class ThreadResource extends Resource
         return [
             'index' => Pages\ListThreads::route('/'),
             'create' => Pages\CreateThread::route('/create'),
-            'edit' => Pages\EditThread::route('/{record}/edit'),
+            // 'edit' => Pages\EditThread::route('/{record}/edit'),
+            'view' => Pages\ViewThread::route('/{record}'),
         ];
     }
 }

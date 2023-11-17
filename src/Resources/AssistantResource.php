@@ -10,7 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-
 use function __;
 use function config;
 
@@ -61,8 +60,17 @@ class AssistantResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('code_interpreter'),
                 Forms\Components\Toggle::make('retrieval'),
-                Forms\Components\Textarea::make('metadata')
-                    ->columnSpanFull(),
+                Forms\Components\Repeater::make('metadata')
+                    ->maxItems(20)
+                    ->hidden(fn (Assistant $assistant) => empty($assistant->metadata))
+                    ->schema([
+                        Forms\Components\TextInput::make('key')
+                            ->label('Key')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('value')
+                            ->label('Value')
+                            ->maxLength(255),
+                    ]),
                 Forms\Components\Section::make('OpenAI API')
                     ->disabled()
                     ->compact()
@@ -111,7 +119,7 @@ class AssistantResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

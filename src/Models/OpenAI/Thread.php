@@ -2,12 +2,16 @@
 
 namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
+use ChrisReedIO\OpenAI\SDK\Facades\OpenAI;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use ReflectionException;
+use Throwable;
 use function config;
+use function tap;
 
 class Thread extends Model
 {
@@ -39,5 +43,22 @@ class Thread extends Model
     public function runs(): HasMany
     {
         return $this->hasMany(Run::class);
+    }
+
+    /**
+     * @throws ReflectionException
+     * @throws Throwable
+     */
+    public static function Spawn(?int $user_id = null): self
+    {
+        $threadObject = OpenAI::threads()->create();
+
+        return self::updateOrCreate([
+            'api_id' => $threadObject->id,
+        ], [
+            'user_id' => $user_id ?? auth()->user()->id,
+            'metadata' => $threadObject->metadata,
+            'api_created_at' => $threadObject->created_at,
+        ]);
     }
 }

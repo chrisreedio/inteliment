@@ -4,13 +4,13 @@ namespace ChrisReedIO\Inteliment\Resources;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\MessageRole;
 use ChrisReedIO\Inteliment\Models\OpenAI\Message;
+use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
 use ChrisReedIO\Inteliment\Resources\MessageResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-
 use function __;
 use function config;
 
@@ -74,8 +74,17 @@ class MessageResource extends Resource
                 Forms\Components\Textarea::make('file_ids')
                     ->label('Files')
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('metadata')
-                    ->columnSpanFull(),
+                Forms\Components\Repeater::make('metadata')
+                    ->maxItems(20)
+                    ->hidden(fn(Message $message) => empty($message->metadata))
+                    ->schema([
+                        Forms\Components\TextInput::make('key')
+                            ->label('Key')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('value')
+                            ->label('Value')
+                            ->maxLength(255),
+                    ]),
                 Forms\Components\Section::make('OpenAI API')
                     ->disabled()
                     ->icon('far-microchip-ai')
