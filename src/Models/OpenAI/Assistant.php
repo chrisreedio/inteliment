@@ -49,7 +49,7 @@ class Assistant extends Model
     public static function sync(): void
     {
         $assistants = OpenAI::assistants()->list(ListOrder::Ascending)->collect();
-        // dd($assistants->all());
+
         $newAssistants = [];
         foreach ($assistants->all() as $assistant) {
             $syncedAssistant = static::updateOrCreate([
