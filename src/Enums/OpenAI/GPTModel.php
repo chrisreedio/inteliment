@@ -7,9 +7,9 @@ use Filament\Support\Contracts\HasLabel;
 
 enum GPTModel: string implements HasColor, HasLabel
 {
-    case GPT35Turbo = 'gpt-3.5-turbo';
+    case GPT35Turbo = 'gpt-3.5-turbo-1106';
     case GPT4 = 'gpt-4';
-    case GPT4Turbo = 'gpt-4-turbo';
+    case GPT4Turbo = 'gpt-4-1106-preview';
 
     // case GPT4Vision = 'gpt-4-vision';
 
