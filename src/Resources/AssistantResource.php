@@ -84,14 +84,15 @@ class AssistantResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('model')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('api_id')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('code_interpreter')
                     ->boolean(),
                 Tables\Columns\IconColumn::make('retrieval')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('api_id')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -126,7 +127,8 @@ class AssistantResource extends Resource
         return [
             'index' => Pages\ListAssistants::route('/'),
             'create' => Pages\CreateAssistant::route('/create'),
-            'edit' => Pages\EditAssistant::route('/{record}/edit'),
+            // 'edit' => Pages\EditAssistant::route('/{record}/edit'),
+            'view' => Pages\ViewAssistant::route('/{record}'),
         ];
     }
 }

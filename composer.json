@@ -21,9 +21,9 @@
     ],
     "require": {
         "php": "^8.1",
+        "chrisreedio/laravel-openai-sdk": "dev-dev",
         "filament/filament": "^3.0",
         "illuminate/contracts": "^10.0",
-        "openai-php/laravel": "v0.8.0-beta.1",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
@@ -75,5 +75,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/home/chris/dev/packages/composer/laravel-openai-sdk"
+        }
+    ]
 }
