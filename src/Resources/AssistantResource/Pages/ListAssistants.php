@@ -6,7 +6,6 @@ use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
 use ChrisReedIO\Inteliment\Resources\AssistantResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use OpenAI\Laravel\Facades\OpenAI;
 
 class ListAssistants extends ListRecords
 {

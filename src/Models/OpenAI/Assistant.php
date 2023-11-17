@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use OpenAI\Laravel\Facades\OpenAI;
-use function dd;
+
 use function dump;
 
 class Assistant extends Model
@@ -62,5 +62,4 @@ class Assistant extends Model
         //     // ...
         // }
     }
-
 }
