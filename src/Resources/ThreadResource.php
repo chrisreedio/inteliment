@@ -2,7 +2,6 @@
 
 namespace ChrisReedIO\Inteliment\Resources;
 
-use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
 use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
 use ChrisReedIO\Inteliment\Resources\ThreadResource\Pages;
 use Filament\Forms;

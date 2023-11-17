@@ -4,13 +4,13 @@ namespace ChrisReedIO\Inteliment\Resources;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\MessageRole;
 use ChrisReedIO\Inteliment\Models\OpenAI\Message;
-use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
 use ChrisReedIO\Inteliment\Resources\MessageResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+
 use function __;
 use function config;
 
@@ -76,7 +76,7 @@ class MessageResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\Repeater::make('metadata')
                     ->maxItems(20)
-                    ->hidden(fn(Message $message) => empty($message->metadata))
+                    ->hidden(fn (Message $message) => empty($message->metadata))
                     ->schema([
                         Forms\Components\TextInput::make('key')
                             ->label('Key')
