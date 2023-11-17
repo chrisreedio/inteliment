@@ -93,6 +93,11 @@ class AssistantResource extends Resource
                 Tables\Columns\TextColumn::make('api_id')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('api_created_at')
+                    ->label('OpenAI Created At')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
