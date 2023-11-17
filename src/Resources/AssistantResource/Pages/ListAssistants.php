@@ -4,11 +4,8 @@ namespace ChrisReedIO\Inteliment\Resources\AssistantResource\Pages;
 
 use ChrisReedIO\Inteliment\Models\OpenAI\Assistant;
 use ChrisReedIO\Inteliment\Resources\AssistantResource;
-use ChrisReedIO\OpenAI\SDK\Enums\ListOrder;
-use ChrisReedIO\OpenAI\SDK\Facades\OpenAI;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use function dd;
 
 class ListAssistants extends ListRecords
 {

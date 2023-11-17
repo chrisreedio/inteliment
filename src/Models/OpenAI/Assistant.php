@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+
 use function count;
 
 class Assistant extends Model
@@ -75,8 +76,8 @@ class Assistant extends Model
             ->iconColor('success')
             ->body(
                 count($assistants->all()) . ' ' . Str::plural('assistant', count($assistants->all())) . ' were synced. '
-                . (count($newAssistants) ? count($newAssistants) . ' were created.' : ''))
+                . (count($newAssistants) ? count($newAssistants) . ' were created.' : '')
+            )
             ->send();
     }
-
 }
