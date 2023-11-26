@@ -4,6 +4,7 @@ namespace ChrisReedIO\Inteliment\Resources;
 
 use ChrisReedIO\Inteliment\Models\OpenAI\Thread;
 use ChrisReedIO\Inteliment\Resources\ThreadResource\Pages;
+use ChrisReedIO\Inteliment\Resources\ThreadResource\RelationManagers;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -123,7 +124,7 @@ class ThreadResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\MessageRelationManager::make(),
         ];
     }
 
