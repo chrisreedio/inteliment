@@ -15,7 +15,7 @@ class ListThreads extends ListRecords
     {
         return [
             Actions\Action::make('Spawn')
-                ->icon(config('inteliment.fontawesome', false) ? 'far-robot' : 'heroicon-o-terminal')
+                ->icon(config('inteliment.fontawesome', false) ? 'far-robot' : 'heroicon-o-command-line')
                 ->action(function () {
                     Thread::spawn();
                 }),

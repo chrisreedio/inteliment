@@ -15,7 +15,7 @@ class ListAssistants extends ListRecords
     {
         return [
             Actions\Action::make('Import')
-                ->icon(config('inteliment.fontawesome', false) ? 'far-file-import' : 'heroicon-o-cloud-upload')
+                ->icon(config('inteliment.fontawesome', false) ? 'far-file-import' : 'heroicon-o-cloud-arrow-up')
                 ->action(function () {
                     Assistant::sync();
                 }),
