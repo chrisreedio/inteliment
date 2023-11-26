@@ -79,7 +79,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "/home/chris/dev/packages/composer/laravel-openai-sdk"
+            "url": "/home/chris/dev/chrisreedio/packages/laravel/laravel-openai-sdk"
         }
     ]
 }
