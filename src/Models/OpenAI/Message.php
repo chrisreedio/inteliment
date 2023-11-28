@@ -5,7 +5,6 @@ namespace ChrisReedIO\Inteliment\Models\OpenAI;
 use ChrisReedIO\Inteliment\Enums\OpenAI\MessageRole;
 use ChrisReedIO\Inteliment\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

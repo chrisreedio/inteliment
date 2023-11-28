@@ -5,7 +5,6 @@ namespace ChrisReedIO\Inteliment\Models\OpenAI;
 use ChrisReedIO\Inteliment\Models\BaseModel;
 use ChrisReedIO\OpenAI\SDK\Facades\OpenAI;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use ReflectionException;

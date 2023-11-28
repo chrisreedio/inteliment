@@ -13,5 +13,4 @@ class BaseModel extends Model
             $model->unique_id = Str::ulid();
         });
     }
-
 }
