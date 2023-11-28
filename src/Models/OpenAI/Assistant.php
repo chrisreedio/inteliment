@@ -3,6 +3,7 @@
 namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
+use ChrisReedIO\Inteliment\Models\BaseModel;
 use ChrisReedIO\OpenAI\SDK\Enums\ToolType;
 use ChrisReedIO\OpenAI\SDK\Facades\OpenAI;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,11 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
-class Assistant extends Model
+class Assistant extends BaseModel
 {
     use HasFactory;
 
     protected $fillable = [
+        'unique_id',
         'model',
         'api_id',
         'name',

@@ -3,16 +3,18 @@
 namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\GPTModel;
+use ChrisReedIO\Inteliment\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Run extends Model
+class Run extends BaseModel
 {
     use HasFactory;
 
     protected $fillable = [
+        'unique_id',
         'thread_id',
         'assistant_id',
 

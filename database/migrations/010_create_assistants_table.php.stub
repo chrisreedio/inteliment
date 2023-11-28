@@ -10,6 +10,8 @@ return new class extends Migration {
     {
         Schema::create('assistants', function (Blueprint $table) {
             $table->id();
+            $table->ulid('unique_id')->unique();
+
             $table->string('model')->default(GPTModel::GPT4Turbo->value);
             $table->string('api_id')->nullable();
             $table->string('name')->nullable();

@@ -2,6 +2,7 @@
 
 namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
+use ChrisReedIO\Inteliment\Models\BaseModel;
 use ChrisReedIO\OpenAI\SDK\Facades\OpenAI;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,11 +13,12 @@ use Throwable;
 
 use function config;
 
-class Thread extends Model
+class Thread extends BaseModel
 {
     use HasFactory;
 
     protected $fillable = [
+        'unique_id',
         'user_id',
         'api_id',
         // 'object', // Should always be 'thread'

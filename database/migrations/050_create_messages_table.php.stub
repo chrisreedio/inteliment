@@ -13,6 +13,8 @@ return new class extends Migration {
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->ulid('unique_id')->unique();
+
             $table->foreignIdFor(config('inteliment.models.user'))->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Assistant::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Thread::class)->nullable()->constrained()->cascadeOnDelete();

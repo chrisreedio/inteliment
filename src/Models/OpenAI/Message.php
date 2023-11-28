@@ -3,17 +3,19 @@
 namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\MessageRole;
+use ChrisReedIO\Inteliment\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Message extends Model
+class Message extends BaseModel
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
+        'unique_id',
         'user_id',
         'assistant_id',
         'thread_id',

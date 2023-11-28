@@ -4,15 +4,17 @@ namespace ChrisReedIO\Inteliment\Models\OpenAI;
 
 use ChrisReedIO\Inteliment\Enums\OpenAI\RunStepStatus;
 use ChrisReedIO\Inteliment\Enums\OpenAI\RunStepType;
+use ChrisReedIO\Inteliment\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class RunStep extends Model
+class RunStep extends BaseModel
 {
     use HasFactory;
 
     protected $fillable = [
+        'unique_id',
         'run_id',
         'thread_id',
         'assistant_id',

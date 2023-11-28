@@ -12,6 +12,8 @@ return new class extends Migration {
     {
         Schema::create('run_steps', function (Blueprint $table) {
             $table->id();
+            $table->ulid('unique_id')->unique();
+
             $table->foreignIdFor(Run::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Thread::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Assistant::class)->nullable()->constrained()->nullOnDelete();

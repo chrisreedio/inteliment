@@ -11,6 +11,7 @@ return new class extends Migration {
     {
         Schema::create('runs', function (Blueprint $table) {
             $table->id();
+            $table->ulid('unique_id')->unique();
 
             // $table->foreignIdFor(User::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Thread::class)->nullable()->constrained()->cascadeOnDelete();
